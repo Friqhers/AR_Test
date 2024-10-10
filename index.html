@@ -37,6 +37,12 @@
     const modelUrl = "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoomBox/glTF-Binary/BoomBox.glb";
     const modelUrlIos = "https://developer.apple.com/augmented-reality/quick-look/models/pancakes/pancakes.usdz";
 
+    const hexaUrlIos = "https://github.com/Friqhers/AR_Test/raw/refs/heads/main/hexa_test.usdz";
+    const hexaUrlAndroid = "https://github.com/Friqhers/AR_Test/raw/refs/heads/main/hexabot.glb";
+
+    modelUrl = hexaUrlAndroid;
+    modelUrlIos = hexaUrlIos;
+
     window.addEventListener('load', () => {
       const modelLink = document.getElementById("openModel");
       const messageEl = document.getElementById("message");
