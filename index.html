@@ -46,7 +46,8 @@
         modelLink.href = intentUrl;
         modelLink.textContent = "Open 3D Model in Android AR Viewer";
       } else if (isIOS()) {
-        const quickLookUrl = `https://developer.apple.com/arkit/gallery/preview.html?url=${encodeURIComponent(modelUrlIos)}.usdz`;
+        //const quickLookUrl = `https://developer.apple.com/arkit/gallery/preview.html?url=${encodeURIComponent(modelUrlIos)}`;
+        const quickLookUrl = modelUrlIos;
         modelLink.href = quickLookUrl;
         modelLink.textContent = "Open 3D Model in iOS AR Viewer";
       } else {
