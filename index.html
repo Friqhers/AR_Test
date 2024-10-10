@@ -34,8 +34,8 @@
   <script>
     const isAndroid = () => /Android/i.test(navigator.userAgent);
     const isIOS = () => /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    const modelUrl = "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoomBox/glTF-Binary/BoomBox.glb";
-    const modelUrlIos = "https://developer.apple.com/augmented-reality/quick-look/models/pancakes/pancakes.usdz";
+    let modelUrl = "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoomBox/glTF-Binary/BoomBox.glb";
+    let modelUrlIos = "https://developer.apple.com/augmented-reality/quick-look/models/pancakes/pancakes.usdz";
 
     const hexaUrlIos = "https://github.com/Friqhers/AR_Test/raw/refs/heads/main/hexa_test.usdz";
     const hexaUrlAndroid = "https://github.com/Friqhers/AR_Test/raw/refs/heads/main/hexabot.glb";
