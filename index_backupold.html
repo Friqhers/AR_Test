@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model in AR</title>
+    <script>
+        window.onload = function () {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Detect if the device is iOS
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                // Redirect to the .usdz model for iOS AR Quick Look
+                window.location.href = "https://drive.google.com/file/d/1HwU8ana5bLsuj4wMgWvZMYuRFh--0kdl/view?usp=sharing";
+            } 
+            // Detect if the device is Android
+            else if (/android/i.test(userAgent)) {
+                // Redirect to the .glb model for Android Scene Viewer
+                window.location.href = "https://drive.google.com/file/d/1HwU8ana5bLsuj4wMgWvZMYuRFh--0kdl/view?usp=sharing";
+            } else {
+                alert("AR is not supported on your device.");
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Loading AR experience...</h1>
+    <!-- This is just a loading message, the script will handle everything -->
+</body>
+</html>

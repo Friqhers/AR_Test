@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Model Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    #message {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    #openModel {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div id="message">Click below to open the 3D model:</div>
+  <a id="openModel" href="#">Open 3D Model</a>
+
+  <script>
+    const isAndroid = () => /Android/i.test(navigator.userAgent);
+    const isIOS = () => /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const modelUrl = "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoomBox/glTF-Binary/BoomBox.glb";
+    const modelUrlIos = "https://developer.apple.com/augmented-reality/quick-look/models/pancakes/pancakes.usdz";
+
+    window.addEventListener('load', () => {
+      const modelLink = document.getElementById("openModel");
+      const messageEl = document.getElementById("message");
+
+      if (isAndroid()) {
+        const intentUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${encodeURIComponent(modelUrl)}&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent(modelUrl)};end;`;
+        modelLink.href = intentUrl;
+        modelLink.textContent = "Open 3D Model in Android AR Viewer";
+      } else if (isIOS()) {
+        const quickLookUrl = `https://developer.apple.com/arkit/gallery/preview.html?url=${encodeURIComponent(modelUrlIos)}.usdz`;
+        modelLink.href = quickLookUrl;
+        modelLink.textContent = "Open 3D Model in iOS AR Viewer";
+      } else {
+        messageEl.textContent = "This feature is only available on Android and iOS devices.";
+        modelLink.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
