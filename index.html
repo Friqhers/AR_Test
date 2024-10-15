@@ -56,36 +56,36 @@
     }
 
     if(!models[name]){
-      const modelLink = document.getElementById("openModel");
-      const messageEl = document.getElementById("message");
-      messageEl.textContent = "Model " + name + " does not exist!";
-      modelLink.style.display = "none";
-      console.log("not valid");
+      modelUrl = models["hexa"].android
+      modelUrlIos = models["hexa"].ios;
     }
     else{
       console.log("valid");
       modelUrl = models[name].android
       modelUrlIos = models[name].ios;
-      console.log(modelUrl);
-      console.log(modelUrlIos);
-      window.addEventListener('load', () => {
-        const modelLink = document.getElementById("openModel");
-        const messageEl = document.getElementById("message");
-        if (isAndroid()) {
-          const intentUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${encodeURIComponent(modelUrl)}&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent(modelUrl)};end;`;
-          modelLink.href = intentUrl;
-          modelLink.textContent = "Open 3D Model in Android AR Viewer";
-        } else if (isIOS()) {
-          //const quickLookUrl = `https://developer.apple.com/arkit/gallery/preview.html?url=${encodeURIComponent(modelUrlIos)}`;
-          const quickLookUrl = modelUrlIos;
-          modelLink.href = quickLookUrl;
-          modelLink.textContent = "Open 3D Model in iOS AR Viewer";
-        } else {
-          messageEl.textContent = "This feature is only available on Android and iOS devices.";
-          modelLink.style.display = "none";
-        }
-      });
     }
+    
+    
+    console.log(modelUrl);
+    console.log(modelUrlIos);
+    window.addEventListener('load', () => {
+      const modelLink = document.getElementById("openModel");
+      const messageEl = document.getElementById("message");
+      if (isAndroid()) {
+        const intentUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${encodeURIComponent(modelUrl)}&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent(modelUrl)};end;`;
+        modelLink.href = intentUrl;
+        modelLink.textContent = "Open 3D Model in Android AR Viewer";
+      } else if (isIOS()) {
+        //const quickLookUrl = `https://developer.apple.com/arkit/gallery/preview.html?url=${encodeURIComponent(modelUrlIos)}`;
+        const quickLookUrl = modelUrlIos;
+        modelLink.href = quickLookUrl;
+        modelLink.textContent = "Open 3D Model in iOS AR Viewer";
+      } else {
+        messageEl.textContent = "This feature is only available on Android and iOS devices.";
+        modelLink.style.display = "none";
+      }
+    });
+    
     
     
 
