@@ -29,7 +29,7 @@
 </head>
 <body>
   <div id="message">Click below to open the 3D model:</div>
-  <a id="openModel" href="#" rel="ar">Open 3D Model</a>
+  <a id="openModel" href="#"  rel="ar">Open 3D Model</a>
 
   <script>
     const isAndroid = () => /Android/i.test(navigator.userAgent);
@@ -66,6 +66,8 @@
       console.log("valid");
       modelUrl = models[name].android
       modelUrlIos = models[name].ios;
+      console.log(modelUrl);
+      console.log(modelUrlIos);
       window.addEventListener('load', () => {
         const modelLink = document.getElementById("openModel");
         const messageEl = document.getElementById("message");
@@ -73,17 +75,11 @@
           const intentUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${encodeURIComponent(modelUrl)}&mode=ar_only#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent(modelUrl)};end;`;
           modelLink.href = intentUrl;
           modelLink.textContent = "Open 3D Model in Android AR Viewer";
-
-          // Programmatically click the link
-          //document.getElementById('openModel').click();
         } else if (isIOS()) {
           //const quickLookUrl = `https://developer.apple.com/arkit/gallery/preview.html?url=${encodeURIComponent(modelUrlIos)}`;
           const quickLookUrl = modelUrlIos;
           modelLink.href = quickLookUrl;
           modelLink.textContent = "Open 3D Model in iOS AR Viewer";
-
-          // Programmatically click the link
-          //document.getElementById('openModel').click();
         } else {
           messageEl.textContent = "This feature is only available on Android and iOS devices.";
           modelLink.style.display = "none";
