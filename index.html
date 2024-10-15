@@ -75,7 +75,7 @@
           modelLink.textContent = "Open 3D Model in Android AR Viewer";
 
           // Programmatically click the link
-          document.getElementById('openModel').click();
+          //document.getElementById('openModel').click();
         } else if (isIOS()) {
           //const quickLookUrl = `https://developer.apple.com/arkit/gallery/preview.html?url=${encodeURIComponent(modelUrlIos)}`;
           const quickLookUrl = modelUrlIos;
@@ -83,7 +83,7 @@
           modelLink.textContent = "Open 3D Model in iOS AR Viewer";
 
           // Programmatically click the link
-          document.getElementById('openModel').click();
+          //document.getElementById('openModel').click();
         } else {
           messageEl.textContent = "This feature is only available on Android and iOS devices.";
           modelLink.style.display = "none";
