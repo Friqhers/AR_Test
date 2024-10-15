@@ -37,11 +37,33 @@
     let modelUrl = "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoomBox/glTF-Binary/BoomBox.glb";
     let modelUrlIos = "https://developer.apple.com/augmented-reality/quick-look/models/pancakes/pancakes.usdz";
 
-    const hexaUrlIos = "https://github.com/Friqhers/AR_Test/raw/refs/heads/main/hexa_test.usdz";
-    const hexaUrlAndroid = "https://github.com/Friqhers/AR_Test/raw/refs/heads/main/hexabot.glb";
+    // Get the full URL
+    const urlParams = new URLSearchParams(window.location.search);
 
-    modelUrl = hexaUrlAndroid;
-    modelUrlIos = hexaUrlIos;
+    // Extract individual parameters
+    const name = urlParams.get('model');  //hexa or ar3
+
+    models = {
+      hexa: { 
+        android: "https://github.com/Friqhers/AR_Test/raw/refs/heads/main/hexa_test.usdz",
+        ios: "https://github.com/Friqhers/AR_Test/raw/refs/heads/main/hexabot.glb"
+      },
+      ar3: {
+        android: "https://github.com/Friqhers/AR_Test/raw/refs/heads/main/ar3.usdz",
+        ios: "https://github.com/Friqhers/AR_Test/raw/refs/heads/main/ar3.glb"
+      }
+    }
+
+    if(!models[name]){
+      const modelLink = document.getElementById("openModel");
+      const messageEl = document.getElementById("message");
+      messageEl.textContent = "Model " + name + "does not exist!";
+      modelLink.style.display = "none";
+      return;
+    }
+    
+    modelUrlAndroid = models[name].android
+    modelUrlIos = models[name].ios;
 
     window.addEventListener('load', () => {
       const modelLink = document.getElementById("openModel");
