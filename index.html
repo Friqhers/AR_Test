@@ -58,10 +58,9 @@
     if(!models[name]){
       const modelLink = document.getElementById("openModel");
       const messageEl = document.getElementById("message");
-      messageEl.textContent = "Model " + name + "does not exist!";
+      messageEl.textContent = "Model " + name + " does not exist!";
       modelLink.style.display = "none";
       console.log("not valid");
-      return;
     }
     else{
       console.log("valid");
