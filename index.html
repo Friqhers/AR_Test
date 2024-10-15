@@ -42,7 +42,8 @@
 
     // Extract individual parameters
     const name = urlParams.get('model');  //hexa or ar3
-    urlParams.has(model);
+    console.log({name});
+    //urlParams.has(model);
     models = {
       hexa: { 
         android: "https://github.com/Friqhers/AR_Test/raw/refs/heads/main/hexa_test.usdz",
@@ -59,9 +60,11 @@
       const messageEl = document.getElementById("message");
       messageEl.textContent = "Model " + name + "does not exist!";
       modelLink.style.display = "none";
+      console.log("not valid");
       return;
     }
     else{
+      console.log("valid");
       modelUrlAndroid = models[name].android
       modelUrlIos = models[name].ios;
       window.addEventListener('load', () => {
